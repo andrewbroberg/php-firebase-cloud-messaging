@@ -86,7 +86,7 @@ class MessageTest extends PhpFirebaseCloudMessagingTestCase
 
     public function testJsonSerializeSetDryRunTrue()
     {
-        $body = '{"to":"deviceId","content_available":true,"dryRun":true,"notification":{"title":"test","body":"a nice testing notification"}}';
+        $body = '{"to":"deviceId","content_available":true,"dry_run":true,"notification":{"title":"test","body":"a nice testing notification"}}';
 
         $notification = new Notification('test', 'a nice testing notification');
         $message = new Message();

@@ -191,7 +191,7 @@ class Message implements \JsonSerializable
         }
 
         if ($this->dryRun) {
-            $jsonData['dryRun'] = $this->dryRun;
+            $jsonData['dry_run'] = $this->dryRun;
         }
 
         if ($this->notification && $this->notification->hasNotificationData()) {
