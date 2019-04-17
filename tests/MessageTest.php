@@ -83,4 +83,36 @@ class MessageTest extends PhpFirebaseCloudMessagingTestCase
             json_encode($message)
         );
     }
+
+    public function testJsonSerializeSetDryRunTrue()
+    {
+        $body = '{"to":"deviceId","content_available":true,"dryRun":true,"notification":{"title":"test","body":"a nice testing notification"}}';
+
+        $notification = new Notification('test', 'a nice testing notification');
+        $message = new Message();
+        $message->setNotification($notification);
+        $message->setContentAvailable(true);
+        $message->setDryRun(true);
+        $message->addRecipient(new Device('deviceId'));
+        $this->assertSame(
+            $body,
+            json_encode($message)
+        );
+    }
+
+    public function testJsonSerializeSetDryRunFalse()
+    {
+        $body = '{"to":"deviceId","content_available":true,"notification":{"title":"test","body":"a nice testing notification"}}';
+
+        $notification = new Notification('test', 'a nice testing notification');
+        $message = new Message();
+        $message->setNotification($notification);
+        $message->setContentAvailable(true);
+        $message->setDryRun(false);
+        $message->addRecipient(new Device('deviceId'));
+        $this->assertSame(
+            $body,
+            json_encode($message)
+        );
+    }
 }
